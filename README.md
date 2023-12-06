@@ -1,135 +1,191 @@
-# Project structure
+# React-Redux-Calculator
 
-calculator-app/
-│
-├── public/                  # Public assets
-│   ├── index.html           # Main HTML file
-│   └── ...
-│
-├── src/                     # Source code
-│   ├── components/          # Reusable components
-│   │   └── Calculator/      # Calculator component
-│   │       ├── Calculator.js       # Container component for the calculator
-│   │       ├── Calculator.test.js  # Unit tests for the Calculator component
-│   │       ├── CalculatorUI.js     # Presentation component for the calculator
-│   │       ├── CalculatorUI.test.js # Unit tests for the CalculatorUI component
-│   │       └── Calculator.css      # Styles for the calculator
-│   │
-│   ├── redux/               # Redux-specific files
-│   │   ├── actions/         # Redux Actions
-│   │   │   ├── calculatorActions.js
-│   │   │   └── calculatorActions.test.js # Unit tests for Redux Actions
-│   │   ├── reducers/        # Redux Reducers
-│   │   │   ├── calculatorReducer.js
-│   │   │   ├── calculatorReducer.test.js # Unit tests for the Redux Reducer
-│   │   │   └── index.js
-│   │   └── store.js         # Creates and exports the Redux Store
-│   │
-│   ├── App.js               # Main App component
-│   ├── App.test.js          # Unit tests for the App component
-│   ├── App.css              # Styles for the App
-│   └── index.js             # Entry point for React
-│
-└── package.json             # Project and dependency management
+## Requirements
+### Requirement 1: Number Input
+**User Story:** 
 
-# Components
-## Calculator.js
-- A container component responsible for handling business logic and dispatching Redux actions.
-- Connects the CalculatorUI component to the Redux store.
-- Receives user input and performs calculations.
-## CalculatorUI.js
-- A pure presentation component responsible for displaying the calculator's user interface.
-- Receives all required data and callbacks as props.
-# Redux Structure
-## Actions
-- Defines actions that can be performed in the context of the calculator, such as initializing and performing calculations.
-## Reducer
-- Manages the state of the calculator, responds to actions, and updates the store accordingly.
-## Store
-- The central place where the entire application state is held.
-# Styles
-- CSS files are integrated into the respective components to ensure coherent and modular styles.
-# Installation and Execution
-- Node.js and npm must be installed.
-- The project can be installed and started with npm install and npm start.
+As a user, I want to be able to enter numbers from 0 to 9 using the calculator, so that I can input the figures necessary for my calculations.
+
+**Acceptance Criteria:**
+
+Positive: 
+
+- [ ] Clicking each digit button (0-9) correctly displays the digit in the input area.
+
+Negative: 
+
+- [ ] Input is restricted to numeric buttons only; non-numeric input should be ignored or not available.
+
+### Requirement 2: Display of Input
+**User Story:** 
+
+As a user, I want to see the digits I've entered displayed on the calculator, so that I can confirm the numbers I am working with.
+
+**Acceptance Criteria:**
+
+Positive: 
+
+- [ ] The display updates to show the current sequence of digits as they are entered, up to a maximum of 9 digits.
+- [ ] Entering a number when 9 digits are already displayed should have no effect (i.e., the additional digit is ignored).
+
+Negative: 
+
+- [ ] The display does not allow more than 9 digits to be entered.
+- [ ] The display does not show non-numeric characters or symbols not related to the calculator operations.
+- [ ] The calculator remains functional and responsive even if the user attempts to enter more than 9 digits.
+
+### Requirement 3: Basic Operations
+**User Story:** 
+
+As a user, I want to perform basic arithmetic operations (addition, subtraction, multiplication, and division) with the calculator, so that I can carry out a range of calculations.
+
+**Acceptance Criteria:**
+
+Positive: 
+
+- [ ] Clicking an operation button after entering a number stores the number and sets up the calculator for the next number entry. Multiple operations can be queued before pressing equals.
+
+Negative: 
+
+- [ ] Operations cannot be entered consecutively without entering a number in between (e.g., "++" is invalid). The calculator does not crash or freeze when an operation button is clicked without any preceding number.
+
+### Requirement 4: Equals Button
+**User Story:** 
+
+As a user, I want to use an equals button on the calculator to get the result of my calculation, so that I can quickly see the answer to my arithmetic operations.
+
+**Acceptance Criteria:**
+
+Positive: 
+
+- [ ] Pressing equals after a valid operation sequence correctly calculates and displays the result. The calculator can handle chained operations when equals is pressed (e.g., 2 + 3 - 1).
+
+Negative: 
+
+- [ ] Pressing equals without a complete operation (e.g., just "5 +") does not crash the calculator and handles the scenario gracefully (e.g., does nothing or shows an error message).
+
+### Requirement 5: Clear Functionality
+**User Story:** 
+
+As a user, I want to have a clear button on the calculator to reset my current operation, so that I can start a new calculation without manually deleting everything.
+
+**Acceptance Criteria:**
+
+Positive: 
+
+- [ ] Pressing the clear button resets the current operation and clears the display. After clearing, the calculator is ready for a new operation.
+
+Negative: 
+
+- [ ] Pressing clear at any point resets the operation without affecting the functionality of the calculator (i.e., it does not crash or become unresponsive).
+
+### Requirement 6: State Logging
+**User Story:**
+
+ As a developer, I want the calculator app to log each state and the value of the states, so that I can debug and understand the app's behavior during its operation.
+
+**Acceptance Criteria:**
+
+Positive: 
+
+- [ ] Every state change is logged in the UI with the correct information. Logs accurately reflect the sequence of user actions and resulting state changes.
+
+Negative: 
+
+- [ ] No sensitive data or irrelevant information is logged. The logging does not interfere with the calculator's performance or user experience.
+
+### Requirement 7: Floating Point Input
+**User Story:** 
+
+As a user, I want to be able to enter a dot (decimal point) in the calculator, so that I can work with floating-point numbers for more precise calculations.
+
+**Acceptance Criteria:**
+
+Positive Cases:
+
+- [ ] The calculator UI includes a button for the dot (decimal point).
+- [ ] Clicking the dot button after entering a number appends a decimal point to the number in the display area.
+- [ ] Users can enter numbers after the decimal point to create floating-point numbers.
+- [ ] The calculator correctly handles calculations involving floating-point numbers.
+
+Negative Cases:
+
+- [ ] The calculator prevents the entry of more than one decimal point in a single number (e.g., "5.3.2" is invalid).
+- [ ] The calculator does not crash or produce incorrect results when performing operations with floating-point numbers.
+- [ ] If a decimal point is entered without a following digit, the calculator treats it as a trailing decimal (e.g., "5." is treated as "5.0").
+
+### Requirement 8: Automatic Language Selection
+**User Story:** 
+
+As an international user, I want the calculator application to automatically adapt to my system's language settings, choosing between English, German, and French, so that I can use the app in my preferred language without needing to manually change settings.
+
+**Acceptance Criteria:**
+
+Positive Cases:
+
+- [ ] The calculator UI automatically detects and adapts to the language set in the user's system settings, choosing from English, German, and French.
+- [ ] All UI elements, including buttons and instructions, are displayed in the system's language.
+- [ ] The functionality and state of the calculator remain consistent regardless of the language displayed.
+- [ ] The app gracefully handles scenarios where the system language is not one of the supported languages (defaulting to English, for example).
+- [ ] Negative Cases:
+
+- [ ] Users do not have the option to manually change the language within the app.
+- [ ] Language changes in the system settings are accurately reflected in the app upon the next launch or refresh.
+- [ ] The calculator does not display incomplete translations or incorrect language adaptations.
 
 
+## Quality Goals
 
+| Goal          | Description                                                                |
+|---------------|----------------------------------------------------------------------------|
+| Reliability   | The calculations shall be always correcg                                   |
+| Usability     | 1. The application is intuitively to understand by any user                | 
+|               | 2. The application has an attractive UI design                             | 
+| Extensibility | The application can be easily extended for new features                    |    
 
+## Architectural Constraints
+### Use of React for UI
+Constraint: All user interface components must be implemented using React. This includes using JSX for templating and React components for structuring the UI.
+Implication: The application's UI should be modular, with reusable components where appropriate.
 
+### State Management with Redux
+Constraint: Application state management must be handled using Redux. This includes defining actions, reducers, and utilizing the Redux store for state.
+Implication: Application data flow should follow the Redux pattern of unidirectional data flow, and components should interact with the state via actions and selectors.
 
+## Design
+### Wireframe
+#### Web
+![WEB Calculator](resources/documentation/wire_frame_web.jpg)
 
---------- other stuff should be read later ----------------------------
+#### Mobile
+![Mobile Calculator](resources/documentation/wire_frame_mobile.jpg)
 
+### Final Design
+#### Web
+![WEB Calculator](resources/documentation/design_web.jpg)
 
+#### Mobile
+![WEB Calculator](resources/documentation/iPhone%2014%20Pro%20Max%20–%201.jpg)
+*Calculator*
 
-# Getting Started with Create React App
+![WEB Calculator](resources/documentation/iPhone%2014%20Pro%20Max%20–%202.jpg)
+*States*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![WEB Calculator](resources/documentation/iPhone%2014%20Pro%20Max%20–%203.jpg)
+*About*
 
-## Available Scripts
+## Solution Strategy
+The solution strategy for the React-Redux Calculator App focuses on utilizing the strengths of both React and Redux to create a responsive and state-efficient application. React's component-based architecture is employed to build a user-friendly interface, where each button and display element is a reusable component, ensuring a modular and scalable structure. Redux is integrated for state management, handling the logic of arithmetic operations and user inputs. This approach ensures a centralized and predictable state container, allowing for the consistent tracking and updating of the calculator's state. Actions and reducers in Redux define how state changes in response to user interactions, maintaining unidirectional data flow and facilitating ease of debugging and testing. The combination of React and Redux in this app exemplifies how to effectively manage UI and state in complex web applications.
 
-In the project directory, you can run:
+## App architecure (C4 Model)
+TBD
 
-### `npm start`
+## Cross-cutting concepts
+### State Management
+TBD
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Routing
+TBD
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### I18N
+TBD
