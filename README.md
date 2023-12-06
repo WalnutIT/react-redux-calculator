@@ -1,5 +1,27 @@
 # React-Redux-Calculator
 
+This project showcases a Calculator App developed as a practical demonstration of how React and Redux can be effectively combined to build dynamic web applications with robust state management. The project serves as an example for developers and enthusiasts eager to understand the integration of these technologies in creating responsive and maintainable applications.
+
+## Project Overview
+The Calculator App is developed to illustrate the integration of key concepts and best practices in using React and Redux together. React is utilized for building the user interface components, known for its efficiency in rendering dynamic UIs. Redux manages the application's state, ensuring that the user interface accurately reflects the current state of calculations.
+
+## Key features include:
+
+- Basic arithmetic operations: addition, subtraction, multiplication, and division.
+- Support for floating-point calculations.
+- A clear and user-friendly interface with a digit input limit.
+- Immediate visual feedback and dynamic display updates.
+- Internationalisation (English, German and French)
+
+## Educational and Demonstrative Objectives
+
+The primary objective of this project is educational, providing a clear example of:
+
+- Implementing unidirectional data flow using React and Redux.
+- Systematic management of complex state changes in an application.
+- Developing reusable React UI components.
+- Developing a maintainable and scalable application architecture.
+
 ## Requirements
 ### Requirement 1: Number Input
 **User Story:** 
