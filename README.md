@@ -1,3 +1,68 @@
+# Project structure
+
+calculator-app/
+│
+├── public/                  # Public assets
+│   ├── index.html           # Main HTML file
+│   └── ...
+│
+├── src/                     # Source code
+│   ├── components/          # Reusable components
+│   │   └── Calculator/      # Calculator component
+│   │       ├── Calculator.js       # Container component for the calculator
+│   │       ├── Calculator.test.js  # Unit tests for the Calculator component
+│   │       ├── CalculatorUI.js     # Presentation component for the calculator
+│   │       ├── CalculatorUI.test.js # Unit tests for the CalculatorUI component
+│   │       └── Calculator.css      # Styles for the calculator
+│   │
+│   ├── redux/               # Redux-specific files
+│   │   ├── actions/         # Redux Actions
+│   │   │   ├── calculatorActions.js
+│   │   │   └── calculatorActions.test.js # Unit tests for Redux Actions
+│   │   ├── reducers/        # Redux Reducers
+│   │   │   ├── calculatorReducer.js
+│   │   │   ├── calculatorReducer.test.js # Unit tests for the Redux Reducer
+│   │   │   └── index.js
+│   │   └── store.js         # Creates and exports the Redux Store
+│   │
+│   ├── App.js               # Main App component
+│   ├── App.test.js          # Unit tests for the App component
+│   ├── App.css              # Styles for the App
+│   └── index.js             # Entry point for React
+│
+└── package.json             # Project and dependency management
+
+# Components
+## Calculator.js
+- A container component responsible for handling business logic and dispatching Redux actions.
+- Connects the CalculatorUI component to the Redux store.
+- Receives user input and performs calculations.
+## CalculatorUI.js
+- A pure presentation component responsible for displaying the calculator's user interface.
+- Receives all required data and callbacks as props.
+# Redux Structure
+## Actions
+- Defines actions that can be performed in the context of the calculator, such as initializing and performing calculations.
+## Reducer
+- Manages the state of the calculator, responds to actions, and updates the store accordingly.
+## Store
+- The central place where the entire application state is held.
+# Styles
+- CSS files are integrated into the respective components to ensure coherent and modular styles.
+# Installation and Execution
+- Node.js and npm must be installed.
+- The project can be installed and started with npm install and npm start.
+
+
+
+
+
+
+
+--------- other stuff should be read later ----------------------------
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
