@@ -1,5 +1,28 @@
 # React-Redux-Calculator
 
+This project showcases a Calculator App developed as a practical demonstration of how React and Redux can be effectively combined to build dynamic web applications with robust state management. The project serves as an example for developers and enthusiasts eager to understand the integration of these technologies in creating responsive and maintainable applications.
+
+## Project Overview
+The Calculator App is developed to illustrate the integration of key concepts and best practices in using React and Redux together. React is utilized for building the user interface components, known for its efficiency in rendering dynamic UIs. Redux manages the application's state, ensuring that the user interface accurately reflects the current state of calculations.
+
+## Key features include:
+
+- Basic arithmetic operations: addition, subtraction, multiplication, and division.
+- Support for floating-point calculations.
+- A clear and user-friendly interface with a digit input limit.
+- Immediate visual feedback and dynamic display updates.
+- Internationalisation (English, German and French)
+
+## Educational and Demonstrative Objectives
+
+The primary objective of this project is educational, providing a clear example of:
+
+- Implementing unidirectional data flow using React and Redux.
+- Systematic management of complex state changes in an application.
+- Developing reusable React UI components.
+- Developing a maintainable and scalable application architecture.
+
+
 ## Requirements
 ### Requirement 1: Number Input
 **User Story:** 
@@ -88,11 +111,17 @@ Negative:
 
 Positive: 
 
-- [ ] Every state change is logged in the UI with the correct information. Logs accurately reflect the sequence of user actions and resulting state changes.
+- [ ] When the screen width is less than 641 pixels, a "States" button appears in the calculator UI.
+- [ ] Clicking the "States" button navigates the user to a second screen or view that displays the state logs.
+- [ ] This second screen shows a log of all state changes, including actions taken and the resulting new states.
+- [ ] The functionality for viewing state logs does not interfere with the calculator's primary operations and UI on larger screens.
 
 Negative: 
 
-- [ ] No sensitive data or irrelevant information is logged. The logging does not interfere with the calculator's performance or user experience.
+- [ ] The "States" button is hidden or not present when the screen width is 641 pixels or more.
+- [ ] The state log screen is easily navigable back to the main calculator interface.
+- [ ] The state logs are presented in a clear, readable format, appropriate for smaller screen viewing.
+- [ ] The presence of the "States" button and the state log screen does not impact the performance or responsiveness of the app.
 
 ### Requirement 7: Floating Point Input
 **User Story:** 
@@ -178,7 +207,13 @@ Implication: Application data flow should follow the Redux pattern of unidirecti
 The solution strategy for the React-Redux Calculator App focuses on utilizing the strengths of both React and Redux to create a responsive and state-efficient application. React's component-based architecture is employed to build a user-friendly interface, where each button and display element is a reusable component, ensuring a modular and scalable structure. Redux is integrated for state management, handling the logic of arithmetic operations and user inputs. This approach ensures a centralized and predictable state container, allowing for the consistent tracking and updating of the calculator's state. Actions and reducers in Redux define how state changes in response to user interactions, maintaining unidirectional data flow and facilitating ease of debugging and testing. The combination of React and Redux in this app exemplifies how to effectively manage UI and state in complex web applications.
 
 ## App architecure (C4 Model)
-TBD
+### Flow Diagrams
+#### Enter a digit
+#### Enter an operation
+#### Enter a point
+#### Calculating result
+#### Clearing the application
+#### Printing states
 
 ## Cross-cutting concepts
 ### State Management
@@ -188,4 +223,11 @@ TBD
 TBD
 
 ### I18N
+TBD
+
+## Architecture Decisions
+## Conventions
+TBD
+## Risks and Technical Debts
+## Glossary
 TBD
